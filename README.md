@@ -5,7 +5,7 @@ StratLab is a Python library designed to backtest stock market strategies. The l
 # Installation
 Run the following command in your terminal
 ```bash
-pip install StratLab==1.0.0
+pip install StratLab
 ```
 # How do you use it?
 Step 1: Initialize backtest
