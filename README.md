@@ -1,2 +1,3 @@
 # QuantLab
-Stock market backtesting tool written entirely in Python. Currently using the yfinance API library pull data.
+What is it?
+QuantLab is a Python library designed to backtest stock market strategies. The library is currently using the yfinance (Yahoo Finance) API as a means for extracting financial data, which is then manipulated utilizing Pandas dataframes and Numpy functions.
