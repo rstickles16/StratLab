@@ -17,6 +17,7 @@ bt.add_condition(
   study_2='sma',
   study_2_period=200
 )
+```
 
 Step 3: Add holding for the condition(s)
 ```python
