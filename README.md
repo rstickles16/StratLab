@@ -6,7 +6,10 @@ StratLab is a Python library designed to backtest stock market strategies. The l
 StratLab is not currently on PyPi, so pip installation is not available. In the meantime, the recommendation is to:
   1. Download the zip file of the repository to a location on your local machine
   2. Add the package location to your python path using the following methods.
-  
+
+  ON A MAC
+  ```nano ~/.bash_profile
+  ```
   
 # How do you use it?
 Step 1: Initialize backtest
