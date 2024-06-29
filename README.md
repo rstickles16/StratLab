@@ -8,8 +8,13 @@ StratLab is not currently on PyPi, so pip installation is not available. In the 
   2. Add the package location to your python path using the following methods.
 
   SETTING $PYTHONPATH ON A MAC
+  Step 1: Open bash profile
   ```bash
   nano ~/.bash_profile
+  ```
+  Step 2: After the last line of text enter following code:
+  ```bash
+  
   ```
   
 # How do you use it?
