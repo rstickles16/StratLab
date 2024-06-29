@@ -295,28 +295,3 @@ class Backtest:
         self.run_stats()
         self.report_time()
 
-# # Sandbox
-bt = Backtest(timer=True)
-
-# # Add Conditions
-bt.add_condition(
-    name='long',
-    ticker_1='^ndx',
-    study_1='sma',
-    study_1_period=50,
-    operator = '>',
-    ticker_2 = '^ndx',
-    study_2 = 'sma',
-    study_2_period=200
-)
-
-# # Add Holdings
-bt.add_holding(
-    ['long'],
-    ['True'],
-    ['^ndx'],
-    leverage=3
-)
-
-bt.run()
-
