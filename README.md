@@ -14,7 +14,7 @@ StratLab is not currently on PyPi, so pip installation is not available. In the 
   ```
   Step 2: After the last line of text enter following code:
   ```bash
-  
+  export PYTHONPATH="${PYTHONPATH}:{EnterYourPathToStratLabHere}"
   ```
   
 # How do you use it?
