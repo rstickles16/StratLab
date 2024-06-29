@@ -16,6 +16,7 @@ StratLab is not currently on PyPi, so pip installation is not available. In the 
   ```bash
   export PYTHONPATH="${PYTHONPATH}:{EnterYourPathToStratLabHere}"
   ```
+  Make sure to replace {EnterYourPathToStratLabHere} with the actual folder path to the package.
   
 # How do you use it?
 Step 1: Initialize backtest
