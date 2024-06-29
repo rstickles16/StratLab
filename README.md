@@ -6,18 +6,6 @@ StratLab is a Python library designed to backtest stock market strategies. The l
 ```bash
 pip install StratLab==1.0.0
 ```
-
-# Set Python Path on a MAC
-  Step 1: Open bash profile
-  ```bash
-  nano ~/.bash_profile
-  ```
-  Step 2: After the last line of text enter following code:
-  ```bash
-  export PYTHONPATH="${PYTHONPATH}:{EnterYourPathToStratLabHere}"
-  ```
-  Make sure to replace {EnterYourPathToStratLabHere} with the actual folder path to the package.
-  
 # How do you use it?
 Step 1: Initialize backtest
 ```python
