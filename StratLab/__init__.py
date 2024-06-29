@@ -12,8 +12,8 @@ import holdings
 import xcel
 import simulate
 import backtest_stats
-import plots
 from . import version
+from . import plots
 __version__ = version.get_version()
 
 
@@ -23,9 +23,10 @@ class Backtest:
             starting_amt: float = 1000,
             start: str='1950-01-01',
             end: str=dt.now(),
-            writer_path: str = r'/Users/bobbystickles/Desktop/Backtest_1.xlsx',
+            to_excel: bool=False,
+            writer_path: str = None,
             offline: str = False,
-            offline_io: str = r'/Users/bobbystickles/Desktop/Backtest.xlsx',
+            offline_io: str = None,
             include_stats: bool = True,
             timer: bool = False,
             show_plot: bool = False
@@ -44,6 +45,10 @@ class Backtest:
         self.include_stats = include_stats
         self.timer = timer
         self.show_plot = False
+        self.to_excel = to_excel
+        
+        if self.to_excel is True and writer_path is None:
+            raise ValueError('If the to_excel argument is True, you must provide a valid file path!')
         
 
         # Create buckets to report runtime lengths
@@ -60,7 +65,8 @@ class Backtest:
             self.df = pd.read_excel(io=self.offline_io)
     
         # Make a writer for the backtest
-        self.writer = pd.ExcelWriter(writer_path, engine='xlsxwriter')
+        if self.to_excel is True:
+            self.writer = pd.ExcelWriter(writer_path, engine='xlsxwriter')
 
     def runtime(
             self,
@@ -250,7 +256,8 @@ class Backtest:
         runtime_start = dt.now()
         plots.running_total(
             df=self.df,
-            show=self.show_plot
+            show=self.show_plot,
+            writer_path = self.writer_path
         )
         runtime_end = dt.now()
         self.plot_timer += self.runtime(runtime_start, runtime_end)
@@ -261,7 +268,7 @@ class Backtest:
         runtime_start = dt.now()
         self.df.to_excel(self.writer)
         self.writer.book.add_worksheet('Charts')
-        self.writer.sheets['Charts'].insert_image('A1', r'/Users/bobbystickles/Desktop/plot.png')
+        self.writer.sheets['Charts'].insert_image('A1', self.writer_path.replace('xlsx', 'png'))
         runtime_end = dt.now()
         self.write_to_excel_timer += self.runtime(runtime_start, runtime_end)
 
@@ -292,8 +299,11 @@ class Backtest:
         self.download_default_holding()
         self.run_simulation()
         self.plot()
-        self.write_to_excel()
-        self.save()
+
+        if self.to_excel is True:
+            self.write_to_excel()
+            self.save()
+
         self.run_stats()
         self.report_time()
 
