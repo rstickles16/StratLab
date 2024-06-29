@@ -33,7 +33,7 @@ Step 3: Add holding for the condition(s)
 # This example tells the backtest to hold ^NDX (Nasdaq 100 Index)
 # when the "200 SMA Bullish" condition is True...
 bt.add_holding(
-  name='200 SMA Bullish',
+  conditions=['200 SMA Bullish'],
   flags=['True'],
   holdings_list=['^NDX']
 )
