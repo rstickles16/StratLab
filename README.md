@@ -8,7 +8,8 @@ bt = Backtest()
 ```
 Step 2: Add condition for trade
 ```python
-# This example shows setting a condition for when the price of ^NDX is above its 200D moving average...
+# This example shows setting a condition for when the price of ^NDX
+# is above its 200D moving average...
 bt.add_condition(
   name='200 SMA Bullish',
   ticker_1='^NDX',
