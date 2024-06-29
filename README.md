@@ -7,6 +7,7 @@ Step 1: Initialize backtest
 bt = Backtest()
 ```
 Step 2: Add condition for trade
+```python
 bt.add_condition(
   name='200 SMA Bullish',
   ticker_1='^NDX',
@@ -23,6 +24,7 @@ bt.add_holding(
   name='200 SMA Bullish',
   flags=['True'],
   holdings_list=['^NDX']
+)
 ```
 
 Step 4: Run the backtest
