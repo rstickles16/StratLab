@@ -5,7 +5,8 @@ StratLab is a Python library designed to backtest stock market strategies. The l
 # How do you use it?
 Step 1: Initialize backtest
 ```python
-bt = Backtest()
+import StratLib as sl
+bt = sl.Backtest()
 ```
 Step 2: Add condition for trade
 ```python
