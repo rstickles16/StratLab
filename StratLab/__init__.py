@@ -5,12 +5,12 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 from datetime import datetime as dt
-import conditions
-import indicators
-import data
-import holdings
-import xcel
-import simulate
+from . import conditions
+from . import indicators
+from . import data
+from . import holdings
+from . import xcel
+from . import simulate
 from . import backtest_stats
 from . import version
 from . import plots
