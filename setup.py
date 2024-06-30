@@ -7,7 +7,8 @@ setup(
     install_requires=[
         'pandas',
         'numpy',
-        'yfinance'
+        'yfinance',
+        'matplotlib'
     ],
     author='Robert Stickles',
     author_email='rstickles16@outlook.com',
