@@ -27,7 +27,7 @@ class Backtest:
             writer_path: str = None,
             offline: str = False,
             offline_io: str = None,
-            include_stats: bool = True,
+            show_stats: bool = True,
             timer: bool = False,
             show_plot: bool = False
     ) -> None:
@@ -42,7 +42,7 @@ class Backtest:
         self.starting_amt = starting_amt
         self.offline = offline
         self.offline_io = offline_io
-        self.include_stats = include_stats
+        self.show_stats = show_stats
         self.timer = timer
         self.show_plot = False
         self.to_excel = to_excel
@@ -245,7 +245,8 @@ class Backtest:
         runtime_start = dt.now()
         backtest_stats.run_stats(
             df=self.df,
-            starting_amt = self.starting_amt
+            starting_amt = self.starting_amt,
+            show_stats=self.show_stats
         )
         runtime_end = dt.now()
         self.run_stats_timer += self.runtime(runtime_start, runtime_end)
@@ -305,5 +306,7 @@ class Backtest:
             self.save()
 
         self.run_stats()
-        self.report_time()
+
+        if self.timer is True:
+            self.report_time()
 

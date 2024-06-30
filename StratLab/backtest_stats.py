@@ -4,7 +4,8 @@ from datetime import datetime as dt
 
 def run_stats(
         df: pd.DataFrame = None,
-        starting_amt: float = None
+        starting_amt: float = None,
+        show_stats: bool = True
 ):
     df['Year'] = df['Date'].dt.year
     year_list = list(pd.unique(df['Year']))
@@ -68,25 +69,27 @@ def run_stats(
         'Pct': pct_list,
         'Max Drawdown': np.min(df['Drawdown'])
     }
-    print('')
-    print('~ GENERAL STATS ~ ')
-    print(f'Beginning Date: {dt.date(stats_dict["Beginning Date"])}')
-    print(f'End Date: {dt.date(stats_dict["Ending Date"])}')
-    print(f'Years Traded: {stats_dict["Years Backtested"]:,.2f}')
-    print('')
-    print('~ PERFORMANCE ~')
-    print(f'Beginning Amount: {stats_dict["Beginning Amt"]:,.2f}')
-    print(f'Ending Amount: {stats_dict["Ending Amt"]:,.2f}')
-    print(f'CAGR: {stats_dict["CAGR"]*100:,.2f}%')
-    print(f'Med Return: {np.median(stats_dict["Pct"])*100:,.2f}%')
-    print(f'Avg Return: {np.average(stats_dict["Pct"])*100:,.2f}%')
-    print(f'Best Return: {np.max(stats_dict["Pct"])*100:,.2f}%')
-    print(f'Worst Return: {np.min(stats_dict["Pct"])*100:,.2f}%')
-    print(f'Max Drawdown: {stats_dict["Max Drawdown"]*100:,.2f}%')
-    print('')
-    print('~ YEARLY PERFORMANCE ~')
-    for num, year in enumerate(year_list):
-        yr_performance = yearly['Pct'][num]
-        print(f'{year}: {yr_performance*100:,.2f}%')
+
+    if show_stats is True:
+        print('')
+        print('~ GENERAL STATS ~ ')
+        print(f'Beginning Date: {dt.date(stats_dict["Beginning Date"])}')
+        print(f'End Date: {dt.date(stats_dict["Ending Date"])}')
+        print(f'Years Traded: {stats_dict["Years Backtested"]:,.2f}')
+        print('')
+        print('~ PERFORMANCE ~')
+        print(f'Beginning Amount: {stats_dict["Beginning Amt"]:,.2f}')
+        print(f'Ending Amount: {stats_dict["Ending Amt"]:,.2f}')
+        print(f'CAGR: {stats_dict["CAGR"]*100:,.2f}%')
+        print(f'Med Return: {np.median(stats_dict["Pct"])*100:,.2f}%')
+        print(f'Avg Return: {np.average(stats_dict["Pct"])*100:,.2f}%')
+        print(f'Best Return: {np.max(stats_dict["Pct"])*100:,.2f}%')
+        print(f'Worst Return: {np.min(stats_dict["Pct"])*100:,.2f}%')
+        print(f'Max Drawdown: {stats_dict["Max Drawdown"]*100:,.2f}%')
+        print('')
+        print('~ YEARLY PERFORMANCE ~')
+        for num, year in enumerate(year_list):
+            yr_performance = yearly['Pct'][num]
+            print(f'{year}: {yr_performance*100:,.2f}%')
 
     return stats_dict
