@@ -1,7 +1,7 @@
 import StratLab as sl
 
 # Initialize backtest
-bt = sl.Backtest()
+bt = sl.Backtest(timer=True)
 
 # Add condition for when ^NDX (Nasdaq 100) is above its 200D moving average
 bt.add_condition(

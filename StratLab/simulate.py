@@ -51,7 +51,7 @@ def simulate(df: pd.DataFrame, starting_amt: float):
     )
 
     # Calculate percent change
-    df['Pct Chg'] = df['Closing Price'].pct_change()
+    df['Pct Chg'] = df['Closing Price'].pct_change(fill_method=None)
     df['Pct Chg'] = np.where(df['Trade Flag'].shift(1) == 1, df['Closing Price'] / df['Opening Price'].shift(1) - 1, df['Pct Chg'])
     df['Pct Chg'] = np.where(pd.isna(df['Pct Chg']), 0, df['Pct Chg'])
 
