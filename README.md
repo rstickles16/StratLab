@@ -8,9 +8,11 @@ pip install StratLab
 # How do you use it?
 Step 1: Initialize backtest
 ```python
+# This imports the StratLab library and intializes the Backtest.
+# The to_excel argument writes an excel file to your desktop with an analysis of the backtest.
 import StratLib as sl
 
-bt = sl.Backtest()
+bt = sl.Backtest(to_excel=True)
 ```
 Step 2: Add condition for trade
 ```python
