@@ -14,6 +14,7 @@ from . import simulate
 from . import backtest_stats
 from . import version
 from . import plots
+from . import user_desktop
 __version__ = version.get_version()
 
 
@@ -48,7 +49,9 @@ class Backtest:
         self.to_excel = to_excel
         
         if self.to_excel is True and writer_path is None:
-            raise ValueError('If the to_excel argument is True, you must provide a valid file path!')
+            desktop = user_desktop.get_desktop_path()
+            default_path = f'{desktop}/StratLabBacktest.xlsx'
+            self.writer_path = default_path
         
 
         # Create buckets to report runtime lengths
@@ -66,7 +69,7 @@ class Backtest:
     
         # Make a writer for the backtest
         if self.to_excel is True:
-            self.writer = pd.ExcelWriter(writer_path, engine='xlsxwriter')
+            self.writer = pd.ExcelWriter(self.writer_path, engine='xlsxwriter')
 
     def runtime(
             self,
