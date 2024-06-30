@@ -284,6 +284,7 @@ class Backtest:
     def report_time(
             self
     ):
+        print('')
         print(f'~ RUNTIMES ~')
         print(f'add_condition: {self.add_condition_timer}')
         print(f'add_holding: {self.add_holding_timer}')
