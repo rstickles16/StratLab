@@ -71,6 +71,10 @@ def run_stats(
     }
 
     if show_stats is True:
+        print('~ YEARLY PERFORMANCE ~')
+        for num, year in enumerate(year_list):
+            yr_performance = yearly['Pct'][num]
+            print(f'{year}: {yr_performance*100:,.2f}%')
         print('')
         print('~ GENERAL STATS ~ ')
         print(f'Beginning Date: {dt.date(stats_dict["Beginning Date"])}')
@@ -87,9 +91,5 @@ def run_stats(
         print(f'Worst Return: {np.min(stats_dict["Pct"])*100:,.2f}%')
         print(f'Max Drawdown: {stats_dict["Max Drawdown"]*100:,.2f}%')
         print('')
-        print('~ YEARLY PERFORMANCE ~')
-        for num, year in enumerate(year_list):
-            yr_performance = yearly['Pct'][num]
-            print(f'{year}: {yr_performance*100:,.2f}%')
 
     return stats_dict

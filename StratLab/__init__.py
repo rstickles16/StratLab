@@ -11,7 +11,7 @@ import data
 import holdings
 import xcel
 import simulate
-import backtest_stats
+from . import backtest_stats
 from . import version
 from . import plots
 __version__ = version.get_version()
