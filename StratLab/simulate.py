@@ -9,7 +9,10 @@ def simulate(
     df.dropna(inplace=True)
 
     # Define the default holding string
-    default_holding_str = f'{default_holding} Close'
+    if default_holding is not None:
+        default_holding_str = f'{default_holding} Close'
+    elif default_holding is None:
+        default_holding_str = f'CASH'
 
     # Checks to see if any conditions were added or this is just buy and hold
     if 'Holding' not in df.columns:
