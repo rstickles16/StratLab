@@ -8,13 +8,24 @@ def simulate(
 ):
     df.dropna(inplace=True)
 
-    if 'Holding' in df.columns:
-        df['Previous Holding'] = df['Holding'].shift(1)
-    elif 'Holding' not in df.columns:
-        df['Holding'] = f'{default_holding} Close'
+    # Define the default holding string
+    default_holding_str = f'{default_holding} Close'
+
+    # Checks to see if any conditions were added or this is just buy and hold
+    if 'Holding' not in df.columns:
+        df['Holding'] = default_holding_str
         df['Previous Holding'] = df['Holding'].shift(1)
 
-    
+    # If the holding is blank, then strategy holds defauly holding
+    df['Holding'] = np.where(
+        df['Holding'] == '',
+        default_holding_str,
+        df['Holding']
+    )
+
+    # Define the previous day's holding
+    df['Previous Holding'] = df['Holding'].shift(1)
+
     # Identify trade flag
     df['Trade Flag'] = (df['Holding'] != df['Holding'].shift(1)).astype(int)
     # Identify trade flag and trade id
