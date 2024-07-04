@@ -1,9 +1,19 @@
 import pandas as pd
 import numpy as np
 
-def simulate(df: pd.DataFrame, starting_amt: float):
+def simulate(
+        df: pd.DataFrame,
+        starting_amt: float,
+        default_holding: str
+):
     df.dropna(inplace=True)
-    df['Previous Holding'] = df['Holding'].shift(1)
+
+    if 'Holding' in df.columns:
+        df['Previous Holding'] = df['Holding'].shift(1)
+    elif 'Holding' not in df.columns:
+        df['Holding'] = f'{default_holding} Close'
+        df['Previous Holding'] = df['Holding'].shift(1)
+
     
     # Identify trade flag
     df['Trade Flag'] = (df['Holding'] != df['Holding'].shift(1)).astype(int)
@@ -23,7 +33,10 @@ def simulate(df: pd.DataFrame, starting_amt: float):
     df.loc[df['Trade Flag'] == 1, 'Days in Open Trade'] = 0
 
     # Define account exposure (adjust for DCA days)
-    df['DCA'] = np.where(df['Days in Open Trade'] >= df['DCA'].shift(1), 1, df['DCA'])
+    if 'DCA' in df.columns:
+        df['DCA'] = np.where(df['Days in Open Trade'] >= df['DCA'].shift(1), 1, df['DCA'])
+    elif 'DCA' not in df.columns:
+        df['DCA'] = 0
     
     df['Account Exposure'] = np.where(
         (df['DCA'].shift(1) > 1) & (df['Days in Open Trade'] > 0) & (df['Days in Open Trade'] < df['DCA'].shift(1)),

@@ -235,7 +235,8 @@ class Backtest:
         runtime_start = dt.now()
         self.df = simulate.simulate(
             self.df,
-            self.starting_amt
+            self.starting_amt,
+            self.default_holding
         )
         if 'Date' not in self.df.columns:
             self.df['Date'] = self.df.index
