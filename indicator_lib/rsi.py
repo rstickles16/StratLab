@@ -2,6 +2,7 @@ import pandas as pd
 
 def add_rsi (
         df: pd.DataFrame,
+        period: int,
         ref_col: str,
         col_name: str
 ):
