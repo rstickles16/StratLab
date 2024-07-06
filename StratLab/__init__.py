@@ -152,7 +152,9 @@ class Backtest:
                         study['study'],
                         study['study_period'],
                         study['period_type'],
-                        study['value']
+                        study['value'],
+                        study['short_period'],
+                        study['long_period']
                     )
 
         self.df = holdings.comparison(

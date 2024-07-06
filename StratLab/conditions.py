@@ -174,6 +174,10 @@ def add_condition (
                 'operator': validate_operator(),
                 'study_1_period': validate_periods()['study_1_period'],
                 'study_2_period': validate_periods()['study_2_period'],
+                'study_1_short_period': validate_periods()['study_1_short_period'],
+                'study_2_short_period': validate_periods()['study_2_short_period'],
+                'study_1_long_period': validate_periods()['study_1_long_period'],
+                'study_2_long_period': validate_periods()['study_2_long_period'],
                 'study_1_period_type': validate_period_types()['type_1'],
                 'study_2_period_type': validate_period_types()['type_2'],
                 'value': validate_value()
@@ -210,6 +214,8 @@ def add_condition (
                 'ticker': tickers['ticker_1'],
                 'study': studies['study_1'],
                 'study_period': periods['study_1_period'],
+                'short_period': periods['study_1_short_period'],
+                'long_period': periods['study_1_long_period'],
                 'period_type': types['type_1'],
                 'value': 0
             }
@@ -217,6 +223,8 @@ def add_condition (
                 'ticker': tickers['ticker_2'],
                 'study': studies['study_2'],
                 'study_period': periods['study_2_period'],
+                'short_period': periods['study_2_short_period'],
+                'long_period': periods['study_2_long_period'],
                 'period_type': types['type_2'],
                 'value': value
             }
