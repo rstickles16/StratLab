@@ -13,7 +13,6 @@ def add_indicator(
         study = 'VALUE'
     study = study.upper()
     ref_col = f'{ticker} {dtype}'
-    col_name = f"{ticker} {period} {study}"
     col_name = f'{ticker} {period} {study}'
 
     if study == 'VALUE':
@@ -23,13 +22,15 @@ def add_indicator(
         df[col_name] = df[ref_col].rolling(period).mean()
 
     if study == 'RSI':
-        delta = df[ref_col].diff()
-        up = delta.clip(lower=0)
-        down = -1 * delta.clip(upper=0)
-        ema_up = up.ewm(com=(period-1), adjust=False).mean()
-        ema_down = down.ewm(com=(period-1), adjust=False).mean()
-        rs = ema_up / ema_down
-        df[col_name] = (100-(100/(1+rs)))
+        # delta = df[ref_col].diff()
+        # up = delta.clip(lower=0)
+        # down = -1 * delta.clip(upper=0)
+        # ema_up = up.ewm(com=(period-1), adjust=False).mean()
+        # ema_down = down.ewm(com=(period-1), adjust=False).mean()
+        # rs = ema_up / ema_down
+        # df[col_name] = (100-(100/(1+rs)))
+        from indicator_lib import rsi
+        rsi.add_rsi(df, ref_col, col_name)
 
     supported_list = [
         'VALUE','PRICE', 'RSI', 'SMA'
