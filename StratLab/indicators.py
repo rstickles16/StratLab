@@ -7,7 +7,9 @@ def add_indicator(
         study: str,
         period: int,
         dtype: str,
-        value: int=0
+        value: int=0,
+        long_period: int = None,
+        short_period: int = None
 
 ) -> pd.DataFrame:
     if study is None:

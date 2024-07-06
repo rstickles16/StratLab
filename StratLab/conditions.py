@@ -12,6 +12,10 @@ def add_condition (
             operator: str = None,
             study_1_period: int = None,
             study_2_period: int = None,
+            study_1_short_period: int = None,
+            study_2_short_period: int = None,
+            study_1_long_period: int = None,
+            study_2_long_period: int = None,
             study_1_period_type: str = None,
             study_2_period_type: str = None,
             value: float = None
@@ -152,7 +156,11 @@ def add_condition (
                 raise ValueError('study_2_period must be blank if the study is PRICE!')
             valid_periods = {
                 'study_1_period': study_1_period,
-                'study_2_period': study_2_period
+                'study_2_period': study_2_period,
+                'study_1_short_period': study_1_short_period,
+                'study_2_short_period': study_2_short_period,
+                'study_1_long_period': study_1_long_period,
+                'study_2_long_period': study_2_long_period
             }
             return valid_periods
 
