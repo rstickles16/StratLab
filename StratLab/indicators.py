@@ -29,7 +29,7 @@ def add_indicator(
         # ema_down = down.ewm(com=(period-1), adjust=False).mean()
         # rs = ema_up / ema_down
         # df[col_name] = (100-(100/(1+rs)))
-        from indicator_lib import rsi
+        from _IndicatorLib import rsi
         rsi.add_rsi(df, period, ref_col, col_name)
 
     supported_list = [
