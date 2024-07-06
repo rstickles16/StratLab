@@ -13,6 +13,8 @@ def add_indicator(
         
 
 ) -> pd.DataFrame:
+    
+    print(long_period)
     if study is None:
         study = 'VALUE'
 

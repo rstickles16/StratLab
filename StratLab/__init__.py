@@ -105,6 +105,10 @@ class Backtest:
             operator: str = None,
             study_1_period: int = None,
             study_2_period: int = None,
+            study_1_short_period: int = None,
+            study_2_short_period: int = None,
+            study_1_long_period: int = None,
+            study_2_long_period: int = None,
             study_1_period_type: str = None,
             study_2_period_type: str = None,
             value: float = None
@@ -122,6 +126,10 @@ class Backtest:
             operator=operator,
             study_1_period=study_1_period,
             study_2_period=study_2_period,
+            study_1_short_period=study_1_short_period,
+            study_2_short_period=study_2_short_period,
+            study_1_long_period=study_1_long_period,
+            study_2_long_period=study_2_long_period,
             study_1_period_type=study_1_period_type,
             study_2_period_type=study_2_period_type,
             value=value
