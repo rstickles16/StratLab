@@ -59,16 +59,6 @@ def add_condition (
             
             if study_2 is None:
                 study_list.remove(study_2)
-
-            supported_list = [
-                'SMA',
-                'RSI',
-                'PRICE'
-            ]
-
-            for study in study_list:
-                if study.upper() not in supported_list:
-                    raise ValueError (f'{study} is not a valid study!')
                 
             if study_1.upper() == 'PRICE':
                 study_1 = study_1.capitalize()

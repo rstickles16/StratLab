@@ -17,6 +17,13 @@ def add_indicator(
     ref_col = f'{ticker} {dtype}'
     col_name = f'{ticker} {period} {study}'
 
+    def ema():
+        from _IndicatorLib import ema
+        return ema.add_ema(df, period, ref_col, col_name)
+
+    def price():
+        return df
+
     def rsi():
         from _IndicatorLib import rsi
         return rsi.add_rsi(df, period, ref_col, col_name)
@@ -30,6 +37,8 @@ def add_indicator(
         return df
 
     indicator_functions = {
+        'EMA': ema,
+        'PRICE': price,
         'RSI': rsi,
         'SMA': sma,
         'VALUE': val
@@ -38,11 +47,7 @@ def add_indicator(
     if study != 'PRICE':
         df = indicator_functions[study]()
 
-    supported_list = [
-    'VALUE','PRICE', 'RSI', 'SMA'
-    ]
-
-    if study not in supported_list:
+    if study not in indicator_functions.keys():
         raise ValueError('Please use a valid study!')
     
     df.dropna(inplace=True)
