@@ -10,7 +10,7 @@ bt.add_condition(
     study_1='rsi',
     study_1_period=10,
     operator='<',
-    value=10
+    value=34
 )
 
 # Add holding for when condition is true
