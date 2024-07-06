@@ -41,7 +41,7 @@ def running_total(
     ax[0].set_title('Equity Curve')
     ax[1].set_title('Equity Curve (Log)')
     ax[2].set_title('Drawdown')
-    fig.suptitle('MOAB Results')
+    fig.suptitle('Backtest Results')
 
     # Create footnotes
     fig.text(

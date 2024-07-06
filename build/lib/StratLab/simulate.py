@@ -1,10 +1,34 @@
 import pandas as pd
 import numpy as np
 
-def simulate(df: pd.DataFrame, starting_amt: float):
+def simulate(
+        df: pd.DataFrame,
+        starting_amt: float,
+        default_holding: str
+):
     df.dropna(inplace=True)
+
+    # Define the default holding string
+    if default_holding is not None:
+        default_holding_str = f'{default_holding} Close'
+    elif default_holding is None:
+        default_holding_str = f'CASH'
+
+    # Checks to see if any conditions were added or this is just buy and hold
+    if 'Holding' not in df.columns:
+        df['Holding'] = default_holding_str
+        df['Previous Holding'] = df['Holding'].shift(1)
+
+    # If the holding is blank, then strategy holds defauly holding
+    df['Holding'] = np.where(
+        df['Holding'] == '',
+        default_holding_str,
+        df['Holding']
+    )
+
+    # Define the previous day's holding
     df['Previous Holding'] = df['Holding'].shift(1)
-    
+
     # Identify trade flag
     df['Trade Flag'] = (df['Holding'] != df['Holding'].shift(1)).astype(int)
     # Identify trade flag and trade id
@@ -23,7 +47,10 @@ def simulate(df: pd.DataFrame, starting_amt: float):
     df.loc[df['Trade Flag'] == 1, 'Days in Open Trade'] = 0
 
     # Define account exposure (adjust for DCA days)
-    df['DCA'] = np.where(df['Days in Open Trade'] >= df['DCA'].shift(1), 1, df['DCA'])
+    if 'DCA' in df.columns:
+        df['DCA'] = np.where(df['Days in Open Trade'] >= df['DCA'].shift(1), 1, df['DCA'])
+    elif 'DCA' not in df.columns:
+        df['DCA'] = 0
     
     df['Account Exposure'] = np.where(
         (df['DCA'].shift(1) > 1) & (df['Days in Open Trade'] > 0) & (df['Days in Open Trade'] < df['DCA'].shift(1)),
