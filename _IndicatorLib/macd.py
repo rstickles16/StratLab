@@ -4,8 +4,9 @@ def add_macd(
         df: pd.DataFrame,
         short_period: int,
         long_period: int,
-        signal_period: int,
-        ref_col: str
+        period: int,
+        ref_col: str,
+        col_name: str
 ) -> pd.DataFrame:
     short_ema = df[ref_col].ewm(span=short_period, adjust=False).mean()
     long_ema = df[ref_col].ewm(span=long_period, adjust=False).mean()

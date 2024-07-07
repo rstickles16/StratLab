@@ -14,8 +14,6 @@ def add_indicator(
 
 ) -> pd.DataFrame:
     
-    print(long_period)
-    print(short_period)
     if study is None:
         study = 'VALUE'
 
@@ -26,6 +24,10 @@ def add_indicator(
     def ema():
         from _IndicatorLib import ema
         return ema.add_ema(df, period, ref_col, col_name)
+
+    def macd():
+        from _IndicatorLib import macd
+        macd.add_macd(df, short_period, long_period, period, ref_col, col_name)
 
     def price():
         return df
