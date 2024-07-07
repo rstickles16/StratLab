@@ -146,12 +146,8 @@ def add_condition (
             return value
 
         def validate_periods():
-            if study_1_period is None and study_1.upper() != 'PRICE':
-                raise ValueError('study_1_period is required if the study is not price!')
             if study_1_period is not None and study_1.upper() == 'PRICE':
                 raise ValueError('study_1_period must be blank if study_1 is PRICE!')
-            if study_2_period is None and study_2 is not None and study_2.upper() != 'PRICE':
-                raise ValueError('study_2_period is required if the study is not price or a value!')
             if study_2_period is not None and study_2.upper() == 'PRICE':
                 raise ValueError('study_2_period must be blank if the study is PRICE!')
             valid_periods = {

@@ -10,8 +10,6 @@ def add_indicator(
         value: int=0,
         short_period: int = None,
         long_period: int = None
-        
-
 ) -> pd.DataFrame:
     
     if study is None:
@@ -20,6 +18,9 @@ def add_indicator(
     study = study.upper()
     ref_col = f'{ticker} {dtype}'
     col_name = f'{ticker} {period} {study}'
+    high_col = f'{ticker} High'
+    low_col = f'{ticker} Low'
+    close_col = f'{ticker} Close'
 
     def ema():
         from _IndicatorLib import ema
@@ -35,6 +36,18 @@ def add_indicator(
     def rsi():
         from _IndicatorLib import rsi
         return rsi.add_rsi(df, period, ref_col, col_name)
+    
+    def sar():
+        from _IndicatorLib import sar
+        if high_col not in df.columns:
+            raise ValueError(f'{high_col} is not located in this dataframe!')
+        return sar.add_sar(
+            df=df,
+            col_name=col_name,
+            high_col=high_col,
+            low_col=low_col,
+            close_col=close_col
+        )
 
     def sma():
         from _IndicatorLib import sma
@@ -49,6 +62,7 @@ def add_indicator(
         'MACD': macd,
         'PRICE': price,
         'RSI': rsi,
+        'SAR': sar,
         'SMA': sma,
         'VALUE': val
     }
