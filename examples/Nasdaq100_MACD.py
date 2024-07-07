@@ -9,7 +9,7 @@ bt.add_condition(
     ticker_1='^NDX',
     study_1='macd',
     study_1_period=9,
-    study_1_short_period=13,
+    study_1_short_period=12,
     study_1_long_period=26,
     operator='>',
     value=0
@@ -19,7 +19,7 @@ bt.add_condition(
 bt.add_holding(
     conditions=['MACD Bullish'],
     flags=['True'],
-    holdings_list=['^NDX']
+    holdings_list=['TQQQ']
 )
 
 # Run backtest
