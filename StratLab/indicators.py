@@ -18,12 +18,13 @@ def add_indicator(
     if study is None:
         study = 'VALUE'
 
+    for i in df:
+        print(df)
     study = study.upper()
     ref_col = f'{ticker} {dtype}'
     col_name = f'{ticker} {period} {study}'
     high_col = f'{ticker} High'
     low_col = f'{ticker} Low'
-    close_col = f'{ticker} Close'
 
     # Define functions for adding all indicators...
 
@@ -45,14 +46,15 @@ def add_indicator(
     def sar():
         from _IndicatorLib import sar
         if high_col not in df.columns:
-            df = data.fetch_data(df, ticker, dtype, start, end)
-            
+            df = data.fetch_data(df, ticker, 'High', start, end)
+        if low_col not in df.columns:
+            df = data.fetch_data(df, ticker, 'Low', start, end)
         return sar.add_sar(
             df=df,
             col_name=col_name,
             high_col=high_col,
             low_col=low_col,
-            close_col=close_col
+            close_col=ref_col
         )
 
     def sma():

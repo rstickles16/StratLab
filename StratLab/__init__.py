@@ -155,14 +155,16 @@ class Backtest:
             if len(new_studies) > 0:
                 for study in new_studies:
                     self.df = indicators.add_indicator(
-                        self.df,
-                        study['ticker'],
-                        study['study'],
-                        study['study_period'],
-                        study['period_type'],
-                        study['value'],
-                        study['short_period'],
-                        study['long_period']
+                        df=self.df,
+                        ticker=study['ticker'],
+                        start=self.start,
+                        end=self.end,
+                        study=study['study'],
+                        period=study['study_period'],
+                        dtype=study['period_type'],
+                        value=study['value'],
+                        short_period=study['short_period'],
+                        long_period=study['long_period']
                     )
 
         self.df = holdings.comparison(
