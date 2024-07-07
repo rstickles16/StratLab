@@ -43,7 +43,7 @@ def comparison(
         '>=': np.greater_equal,
         '<=': np.less_equal
     }
-
+    
     comparison = operators[operator](df[study_1_col],df[study_2_col])
     df[name] = np.where(comparison, 'True', 'False')
     return df

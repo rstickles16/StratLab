@@ -55,7 +55,30 @@ def add_indicator(
             close_col=ref_col
         )
 
-    def sma():
+    def sma_deviation(df=df):
+        from _IndicatorLib import sma_deviation
+        sma_col = f'{ticker} {period} SMA'
+
+        if sma_col not in df.columns:
+            df = sma(
+                df=df,
+                period=period,
+                ref_col=ref_col,
+                col_name=sma_col
+            )
+        return sma_deviation.add_sma_deviation(
+            df=df,
+            price_col=ref_col,
+            sma_col=sma_col,
+            col_name=col_name
+        )
+
+    def sma(
+        df: pd.DataFrame = df,
+        period: int = period,
+        ref_col: str = ref_col,
+        col_name: str = col_name
+    ):
         from _IndicatorLib import sma
         return sma.add_sma(df, period, ref_col, col_name)
 
@@ -70,6 +93,7 @@ def add_indicator(
         'RSI': rsi,
         'SAR': sar,
         'SMA': sma,
+        'SMADEVIATION': sma_deviation,
         'VALUE': val
     }
 
