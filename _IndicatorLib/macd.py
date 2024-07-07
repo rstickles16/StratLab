@@ -11,6 +11,7 @@ def add_macd(
     short_ema = df[ref_col].ewm(span=short_period, adjust=False).mean()
     long_ema = df[ref_col].ewm(span=long_period, adjust=False).mean()
     df['MACD'] = short_ema - long_ema
-    df['MACD_Signal'] = df['MACD'].ewm(span=signal_period, adjust=False).mean()
+    df['MACD_Signal'] = df['MACD'].ewm(span=period, adjust=False).mean()
     df['MACD_Histogram'] = df['MACD'] - df['MACD_Signal']
+    df[col_name] = df['MACD_Histogram']
     return df

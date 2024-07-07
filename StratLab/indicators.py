@@ -27,7 +27,7 @@ def add_indicator(
 
     def macd():
         from _IndicatorLib import macd
-        macd.add_macd(df, short_period, long_period, period, ref_col, col_name)
+        return macd.add_macd(df, short_period, long_period, period, ref_col, col_name)
 
     def price():
         return df
@@ -46,6 +46,7 @@ def add_indicator(
 
     indicator_functions = {
         'EMA': ema,
+        'MACD': macd,
         'PRICE': price,
         'RSI': rsi,
         'SMA': sma,
