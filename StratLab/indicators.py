@@ -1,9 +1,12 @@
 import pandas as pd
 import sys
+import data
 
 def add_indicator(
         df: pd.DataFrame,
         ticker: str,
+        start: str,
+        end: str,
         study: str,
         period: int,
         dtype: str,
@@ -21,6 +24,8 @@ def add_indicator(
     high_col = f'{ticker} High'
     low_col = f'{ticker} Low'
     close_col = f'{ticker} Close'
+
+    # Define functions for adding all indicators...
 
     def ema():
         from _IndicatorLib import ema
@@ -40,7 +45,8 @@ def add_indicator(
     def sar():
         from _IndicatorLib import sar
         if high_col not in df.columns:
-            raise ValueError(f'{high_col} is not located in this dataframe!')
+            df = data.fetch_data(df, ticker, dtype, start, end)
+            
         return sar.add_sar(
             df=df,
             col_name=col_name,
