@@ -18,8 +18,6 @@ def add_indicator(
     if study is None:
         study = 'VALUE'
 
-    for i in df:
-        print(df)
     study = study.upper()
     ref_col = f'{ticker} {dtype}'
     col_name = f'{ticker} {period} {study}'
@@ -43,7 +41,7 @@ def add_indicator(
         from _IndicatorLib import rsi
         return rsi.add_rsi(df, period, ref_col, col_name)
     
-    def sar():
+    def sar(df=df):
         from _IndicatorLib import sar
         if high_col not in df.columns:
             df = data.fetch_data(df, ticker, 'High', start, end)

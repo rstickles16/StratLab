@@ -10,38 +10,47 @@ def add_sar(
         max_af: float = 0.2,
         step: float = 0.02
 ):
-        # Define the function to calculate SAR
-        high = high_col
-        low = low_col
-        close = close_col
+    # Ensure the columns are numeric
+    df[high_col] = pd.to_numeric(df[high_col])
+    df[low_col] = pd.to_numeric(df[low_col])
+    df[close_col] = pd.to_numeric(df[close_col])
+    
+    # Define the function to calculate SAR
+    high = df[high_col]
+    low = df[low_col]
+    close = df[close_col]
 
-        sar = [0] * len(df)
-        af = initial_af
-        uptrend = True
-        ep = high[0]  # extreme point
-        sar[0] = low[0] - (high[0] - low[0])  # Initial SAR value
+    sar = [0] * len(df)
+    af = initial_af
+    uptrend = True
+    ep = high.iloc[0]  # extreme point
+    sar[0] = low.iloc[0] - (high.iloc[0] - low.iloc[0])  # Initial SAR value for uptrend
+    if close.iloc[1] < close.iloc[0]:
+        uptrend = False
+        ep = low.iloc[0]
+        sar[0] = high.iloc[0] + (high.iloc[0] - low.iloc[0])  # Initial SAR value for downtrend
 
-        for i in range(1, len(df)):
-                if uptrend:
-                        sar[i] = sar[i-1] + af * (ep - sar[i-1])
-                if high[i] > ep:
-                        ep = high[i]
-                        af = min(af + step, max_af)
-                if low[i] < sar[i]:
-                        uptrend = False
-                        sar[i] = ep
-                        ep = low[i]
-                        af = initial_af
-                else:
-                        sar[i] = sar[i-1] + af * (ep - sar[i-1])
-                if low[i] < ep:
-                        ep = low[i]
-                        af = min(af + step, max_af)
-                if high[i] > sar[i]:
-                        uptrend = True
-                        sar[i] = ep
-                        ep = high[i]
-                        af = initial_af
+    for i in range(1, len(df)):
+        if uptrend:
+            sar[i] = sar[i-1] + af * (ep - sar[i-1])
+            if high.iloc[i] > ep:
+                ep = high.iloc[i]
+                af = min(af + step, max_af)
+            if low.iloc[i] < sar[i]:
+                uptrend = False
+                sar[i] = ep
+                ep = low.iloc[i]
+                af = initial_af
+        else:
+            sar[i] = sar[i-1] + af * (ep - sar[i-1])
+            if low.iloc[i] < ep:
+                ep = low.iloc[i]
+                af = min(af + step, max_af)
+            if high.iloc[i] > sar[i]:
+                uptrend = True
+                sar[i] = ep
+                ep = high.iloc[i]
+                af = initial_af
 
-        df[col_name] = sar
-        return df
+    df[col_name] = sar
+    return df
