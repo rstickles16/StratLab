@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 import data
 
+
 def add_indicator(
         df: pd.DataFrame,
         ticker: str,
