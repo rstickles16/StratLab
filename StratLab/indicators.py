@@ -28,22 +28,22 @@ def add_indicator(
     # Define functions for adding all indicators...
 
     def ema():
-        from _IndicatorLib import ema
+        from StratLab._IndicatorLib import ema
         return ema.add_ema(df, period, ref_col, col_name)
 
     def macd():
-        from _IndicatorLib import macd
+        from StratLab._IndicatorLib import macd
         return macd.add_macd(df, short_period, long_period, period, ref_col, col_name)
 
     def price():
         return df
 
     def rsi():
-        from _IndicatorLib import rsi
+        from StratLab._IndicatorLib import rsi
         return rsi.add_rsi(df, period, ref_col, col_name)
     
     def sar(df=df):
-        from _IndicatorLib import sar
+        from StratLab._IndicatorLib import sar
         if high_col not in df.columns:
             df = data.fetch_data(df, ticker, 'High', start, end)
         if low_col not in df.columns:
@@ -57,7 +57,7 @@ def add_indicator(
         )
 
     def sma_deviation(df=df):
-        from _IndicatorLib import sma_deviation
+        from StratLab._IndicatorLib import sma_deviation
         sma_col = f'{ticker} {period} SMA'
 
         if sma_col not in df.columns:
@@ -80,7 +80,7 @@ def add_indicator(
         ref_col: str = ref_col,
         col_name: str = col_name
     ):
-        from _IndicatorLib import sma
+        from StratLab._IndicatorLib import sma
         return sma.add_sma(df, period, ref_col, col_name)
 
     def val():
