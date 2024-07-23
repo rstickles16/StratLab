@@ -286,8 +286,9 @@ class Backtest:
     ):
         runtime_start = dt.now()
         self.df.to_excel(self.writer)
-        self.writer.book.add_worksheet('Charts')
-        self.writer.sheets['Charts'].insert_image('A1', self.writer_path.replace('xlsx', 'png'))
+        if self.include_plot is True:
+            self.writer.book.add_worksheet('Charts')
+            self.writer.sheets['Charts'].insert_image('A1', self.writer_path.replace('xlsx', 'png'))
         runtime_end = dt.now()
         self.write_to_excel_timer += self.runtime(runtime_start, runtime_end)
 
@@ -317,7 +318,7 @@ class Backtest:
     ):
         self.download_default_holding()
         self.run_simulation()
-        if self.include_plot:
+        if self.include_plot is True:
             self.plot()
 
         if self.to_excel is True:
