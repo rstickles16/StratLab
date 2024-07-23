@@ -30,7 +30,8 @@ class Backtest:
             offline_io: str = None,
             show_stats: bool = True,
             timer: bool = False,
-            show_plot: bool = False
+            show_plot: bool = False,
+            include_plot: bool = True
     ) -> None:
         self.writer_path = writer_path
         self.start = start
@@ -47,6 +48,7 @@ class Backtest:
         self.timer = timer
         self.show_plot = False
         self.to_excel = to_excel
+        self.include_plot = include_plot
         
         if self.to_excel is True and writer_path is None:
             desktop = user_desktop.get_desktop_path()
@@ -315,7 +317,8 @@ class Backtest:
     ):
         self.download_default_holding()
         self.run_simulation()
-        self.plot()
+        if self.include_plot:
+            self.plot()
 
         if self.to_excel is True:
             self.write_to_excel()
