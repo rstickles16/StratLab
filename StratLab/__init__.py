@@ -49,6 +49,7 @@ class Backtest:
         self.show_plot = False
         self.to_excel = to_excel
         self.include_plot = include_plot
+        self.stats = None
         
         if self.to_excel is True and writer_path is None:
             desktop = user_desktop.get_desktop_path()
@@ -261,7 +262,7 @@ class Backtest:
             self
     ):
         runtime_start = dt.now()
-        backtest_stats.run_stats(
+        self.stats = backtest_stats.run_stats(
             df=self.df,
             starting_amt = self.starting_amt,
             show_stats=self.show_stats
@@ -329,4 +330,3 @@ class Backtest:
 
         if self.timer is True:
             self.report_time()
-
