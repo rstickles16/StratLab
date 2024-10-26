@@ -31,7 +31,8 @@ class Backtest:
             show_stats: bool = True,
             timer: bool = False,
             show_plot: bool = False,
-            include_plot: bool = True
+            include_plot: bool = True,
+            show_excel_path: bool = True
     ) -> None:
         self.writer_path = writer_path
         self.start = start
@@ -50,6 +51,7 @@ class Backtest:
         self.to_excel = to_excel
         self.include_plot = include_plot
         self.stats = None
+        self.show_excel_path = show_excel_path
         
         if self.to_excel is True and writer_path is None:
             desktop = user_desktop.get_desktop_path()
@@ -292,6 +294,8 @@ class Backtest:
             self.writer.sheets['Charts'].insert_image('A1', self.writer_path.replace('xlsx', 'png'))
         runtime_end = dt.now()
         self.write_to_excel_timer += self.runtime(runtime_start, runtime_end)
+        
+        
 
     def save(
             self
@@ -327,6 +331,9 @@ class Backtest:
             self.save()
 
         self.run_stats()
+        if self.show_excel_path is True:
+            print(f'Excel file written to: {self.writer_path}')
+            print('')
 
         if self.timer is True:
             self.report_time()
