@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='StratLab',
-    version='1.0.18',
-    packages=find_packages(),
+    version='1.0.19',
+    packages=find_packages(where='/Users/bobbystickles/Desktop/StratLab', include=['StratLab']),
     install_requires=[
         'pandas',
         'numpy',
@@ -12,6 +12,15 @@ setup(
     ],
     author='Robert Stickles',
     author_email='rstickles16@outlook.com',
-    description='StratLab is a Python library designed to backtest stock market strategies. The library currently uses the yfinance (Yahoo Finance) API as a means for extracting financial data, which is then manipulated utilizing Pandas dataframes and Numpy functions. There are also options to extract the backtested results directly into excel files.',
+    description='StratLab is a Python library designed to backtest stock market strategies.',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     url='https://github.com/rstickles16/StratLab',
+    license='MIT',
+    python_requires='>=3.6',
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
 )
