@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='StratLab',
-    version='1.0.19',
-    packages=find_packages(where='/Users/bobbystickles/Desktop/StratLab', include=['StratLab']),
+    version='1.0.20',
+    packages=find_packages(),
     install_requires=[
         'pandas',
         'numpy',
@@ -24,3 +24,5 @@ setup(
         'Operating System :: OS Independent',
     ],
 )
+
+
