@@ -46,7 +46,7 @@ class Backtest:
         self.offline_io = offline_io
         self.show_stats = show_stats
         self.timer = timer
-        self.show_plot = False
+        self.show_plot = show_plot
         self.to_excel = to_excel
         self.include_plot = include_plot
         self.stats = None

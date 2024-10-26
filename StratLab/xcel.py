@@ -7,6 +7,5 @@ def write_to_excel(
 ):
     with writer:
         df.to_excel(writer, sheet_name=sheet_name)
-    print('done!')
     
     

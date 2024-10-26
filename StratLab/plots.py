@@ -59,3 +59,4 @@ def running_total(
 
     if show == True:
         plt.show()
+    
