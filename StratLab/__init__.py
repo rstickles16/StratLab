@@ -57,7 +57,7 @@ class Backtest:
             desktop = user_desktop.get_desktop_path()
             default_path = f'{desktop}/StratLabBacktest.xlsx'
             self.writer_path = default_path
-        
+
 
         # Create buckets to report runtime lengths
         x = dt.now()-dt.now()
@@ -295,8 +295,6 @@ class Backtest:
         runtime_end = dt.now()
         self.write_to_excel_timer += self.runtime(runtime_start, runtime_end)
         
-        
-
     def save(
             self
     ):
