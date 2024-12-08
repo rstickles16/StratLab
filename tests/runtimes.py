@@ -1,6 +1,6 @@
 import StratLab as sl
 
-bt = sl.Backtest(timer=True)
+bt = sl.Backtest(timer=True, to_excel=True)
 bt.add_condition(
     name='long_sma',
     ticker_1='qqq',
@@ -14,5 +14,6 @@ bt.add_condition(
 bt.add_holding(
     ['long_sma'], [True], ['qqq']
 )
+
 
 bt.run()

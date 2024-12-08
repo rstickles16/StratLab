@@ -35,6 +35,8 @@ class Backtest:
             include_plot: bool = True,
             show_excel_path: bool = True
     ) -> None:
+        self.__starttime__ = dt.now()
+        self.__endtime__ = dt.now()
         self.writer_path = writer_path
         self.start = start
         self.end = end
@@ -315,7 +317,12 @@ class Backtest:
         print(f'run_stats: {self.run_stats_timer}')
         print(f'write_to_excel {self.write_to_excel_timer}')
         print(f'save {self.save_timer}')
-        print('')
+        print('--')
+        print(f'Total Runtime: {self.__endtime__-self.__starttime__}')
+        print(f'''Total Calculated Runtime: {
+            self.add_condition_timer + self.add_holding_timer + self.run_simulation_timer +
+            self.plot_timer + self.run_stats_timer + self.write_to_excel_timer + self.save_timer
+        }''')
 
     def run(
             self
@@ -334,5 +341,6 @@ class Backtest:
             print(f'Excel file written to: {self.writer_path}')
             print('')
 
+        self.__endtime__ = dt.now()
         if self.timer is True:
             self.report_time()
