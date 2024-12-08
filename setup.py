@@ -1,9 +1,13 @@
 from setuptools import setup, find_packages
+import os
+
+# Get the current folder path of this script
+current_folder = os.path.dirname(os.path.abspath(__file__))
 
 setup(
     name='StratLab',
     version='1.0.22',
-    packages=find_packages(where='.'),
+    packages=find_packages(current_folder),
     install_requires=[
         'pandas',
         'numpy',
