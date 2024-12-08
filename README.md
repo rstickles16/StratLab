@@ -1,6 +1,7 @@
 ![StratLab Logo](https://github.com/rstickles16/StratLab/blob/main/logo.png)
 
 [![Code Coverage](https://img.shields.io/codecov/c/gh/rstickles16/StratLab.svg?style=for-the-badge)](https://codecov.io/gh/rstickles16/StratLab)
+[![StratLab on PyPI](https://img.shields.io/pypi/v/StratLab.svg?color=blue&style=for-the-badge)](https://pypi.org/project/StratLab)
 
 
 # What is StratLab?
