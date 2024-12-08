@@ -26,7 +26,7 @@ jobs:
 
       - name: Run tests and generate coverage report
         run: |
-          pytest --cov=your_project --cov-report=xml
+          pytest --cov=StratLab --cov-report=xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
