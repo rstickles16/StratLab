@@ -1,3 +1,4 @@
+![StratLab Logo]([Image_URL](https://github.com/rstickles16/StratLab/blob/main/logo.png))
 
 
 # What is StratLab?
