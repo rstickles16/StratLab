@@ -1,3 +1,7 @@
 def get_version():
-    version = '1.0.22'
+    with open('StratLab/__vrsn__.txt', 'r') as file:
+        version = file.read()
+        print(version)
     return version
+
+get_version()

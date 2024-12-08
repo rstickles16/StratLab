@@ -1,12 +1,18 @@
 from setuptools import setup, find_packages
 import os
 
+version = '1.0.24'
+
 # Get the current folder path of this script
 current_folder = os.path.dirname(os.path.abspath(__file__))
 
+# Send version to the package
+with open('StratLab/__vrsn__.txt', 'w') as file:
+    file.write(version)
+
 setup(
     name='StratLab',
-    version='1.0.22',
+    version=version,
     packages=find_packages(current_folder),
     install_requires=[
         'pandas',
