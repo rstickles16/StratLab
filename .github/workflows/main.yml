@@ -24,9 +24,14 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov
 
+      - name: Install package in editable mode
+        run: pip install -e .
+
       - name: Run tests and generate coverage report
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest --cov=StratLab/tests --cov-report=xml
+          pytest --cov=StratLab --cov-report=xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
