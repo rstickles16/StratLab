@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 from datetime import datetime as dt
+from datetime import timedelta as td
 from . import conditions
 from . import indicators
 from . import data
@@ -60,14 +61,14 @@ class Backtest:
 
 
         # Create buckets to report runtime lengths
-        x = dt.now()-dt.now()
-        self.add_condition_timer = x
-        self.add_holding_timer = x
-        self.run_simulation_timer = x
-        self.run_stats_timer = x
-        self.plot_timer = x
-        self.write_to_excel_timer = x
-        self.save_timer = x
+        zero_timedelta = td(0)
+        self.add_condition_timer = zero_timedelta
+        self.add_holding_timer = zero_timedelta
+        self.run_simulation_timer = zero_timedelta
+        self.run_stats_timer = zero_timedelta
+        self.plot_timer = zero_timedelta
+        self.write_to_excel_timer = zero_timedelta
+        self.save_timer = zero_timedelta
         
         if self.offline is True:
             self.df = pd.read_excel(io=self.offline_io)
