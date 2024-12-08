@@ -1,6 +1,10 @@
 import pandas as pd
 import sys
-from . import data
+
+try:
+        import data
+except:
+        pass
 
 
 def add_indicator(
