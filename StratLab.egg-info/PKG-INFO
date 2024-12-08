@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: StratLab
-Version: 1.0.23
-Summary: StratLab is a Python library designed to backtest stock market strategies.
+Version: 1.0.24
+Summary: Python library dedicated to simplifying the process of backtesting complex stock market strategies.
 Home-page: https://github.com/rstickles16/StratLab
 Author: Robert Stickles
 Author-email: rstickles16@outlook.com
