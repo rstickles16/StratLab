@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='StratLab',
-    version='1.0.21',
+    version='1.0.22',
     packages=find_packages(where='.'),
     install_requires=[
         'pandas',
