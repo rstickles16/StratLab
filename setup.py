@@ -10,10 +10,11 @@ current_folder = os.path.dirname(os.path.abspath(__file__))
 with open(f'{current_folder}/StratLab/__vrsn__.txt', 'w') as file:
     file.write(version)
 
+
 setup(
     name='StratLab',
     version=version,
-    packages=f'{current_folder}',
+    packages=find_packages(where='.'),
     install_requires=[
         'pandas',
         'numpy',
