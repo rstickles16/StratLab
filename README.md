@@ -1,6 +1,6 @@
 ![StratLab Logo](https://github.com/rstickles16/StratLab/blob/main/logo.png)
 
-[![COVERAGE](https://codecov.io/github/rstickles16/StratLab/graph/badge.svg?style=for-the-badgetoken=O0A8X4JZIN)](https://codecov.io/github/rstickles16/StratLab)
+[![Code Coverage](https://img.shields.io/codecov/c/gh/rstickles16/StratLab.svg?style=for-the-badge)](https://codecov.io/gh/rstickles16/StratLab)
 
 
 # What is StratLab?
