@@ -1,4 +1,4 @@
-![StratLab Logo]((https://github.com/rstickles16/StratLab/blob/main/logo.png))
+![StratLab Logo](https://github.com/rstickles16/StratLab/blob/main/logo.png)
 
 
 # What is StratLab?
