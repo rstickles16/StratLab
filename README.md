@@ -5,7 +5,7 @@
 [![PyPI downloads](https://img.shields.io/pypi/dd/StratLab.svg?color=skyblue&style=for-the-badge)](https://pypi.org/project/StratLab)
 
 # What is StratLab?
-StratLab is a Python library designed to backtest stock market strategies. The library currently uses the yfinance (Yahoo Finance) API as a means for extracting financial data, which is then manipulated utilizing Pandas dataframes and Numpy functions. There are also options to extract the backtested results directly into excel files.
+StratLab is a Python library designed to backtest stock market strategies. The library currently uses the yfinance (Yahoo Finance) library as a means for extracting financial data, which is then manipulated utilizing Pandas dataframes and Numpy functions. There are also options to extract the backtested results directly into excel files.
 # How do you install it?
 Run the following command in your terminal
 ```bash
